@@ -1,2 +1,5 @@
 LoadAssetBundle/Library/
 LoadAssetBundle/Temp/
+LoadAssetBundle/obj/Debug/
+LoadAssetBundle/.vs/
+LoadAssetBundle/Assembly-CSharp.csproj
