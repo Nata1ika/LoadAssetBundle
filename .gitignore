@@ -3,3 +3,4 @@ LoadAssetBundle/Temp/
 LoadAssetBundle/obj/Debug/
 LoadAssetBundle/.vs/
 LoadAssetBundle/Assembly-CSharp.csproj
+Build/
