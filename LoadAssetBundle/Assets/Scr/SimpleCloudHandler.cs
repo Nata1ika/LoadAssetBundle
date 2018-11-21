@@ -46,7 +46,7 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITracka
     /// </summary>
     public void OnInitialized(TargetFinder targetFinder)
 	{
-        _targetFinder = targetFinder;
+        //_targetFinder = targetFinder;
     }
 
 	/// <summary>
