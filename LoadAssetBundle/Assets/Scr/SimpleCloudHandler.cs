@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using Vuforia;
 
-public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITrackableEventHandler
+public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler //, ITrackableEventHandler
 {
     [SerializeField] CloudRecoBehaviour _cloudRecognition;
-    [SerializeField] TrackableBehaviour _trackableBehaviour;
+    //[SerializeField] TrackableBehaviour _trackableBehaviour;
 
     private bool _mIsScanning = false;
     private string mTargetMetadata = "";
@@ -20,13 +20,13 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITracka
     void Start()
 	{
 		_cloudRecognition.RegisterEventHandler(this);
-        _trackableBehaviour.RegisterTrackableEventHandler(this);
+        //_trackableBehaviour.RegisterTrackableEventHandler(this);
     }
 
     private void OnDestroy()
     {
         _cloudRecognition.UnregisterEventHandler(this);
-        _trackableBehaviour.UnregisterTrackableEventHandler(this);
+        //_trackableBehaviour.UnregisterTrackableEventHandler(this);
     }
     
     /*
@@ -89,6 +89,7 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITracka
     // Here we handle a cloud target recognition event
     public void OnNewSearchResult(TargetFinder.TargetSearchResult targetSearchResult)
     {
+        Debug.Log("metadate: " + targetSearchResult.MetaData);
         // do something with the target metadata
         mTargetMetadata = targetSearchResult.MetaData;
 
@@ -96,6 +97,7 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITracka
         //_cloudRecognition.CloudRecoEnabled = false;
     }
 
+    /*
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
         if (newStatus == TrackableBehaviour.Status.DETECTED ||
@@ -128,7 +130,8 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler, ITracka
     private void OnTrackingLost()
     {
         mTargetMetadata = "";
-    }    
+    }
+    */
 
     void OnGUI()
     {
