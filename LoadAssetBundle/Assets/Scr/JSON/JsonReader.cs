@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JsonReader : MonoBehaviour
 {
-    [SerializeField] GameObject _newspaperPrefab;
+    [SerializeField] Newspaper _newspaperPrefab;
 
     private GameObject _currentObj;
     private string _meta;
@@ -35,7 +35,10 @@ public class JsonReader : MonoBehaviour
         var info = JsonUtility.FromJson<Json>(meta);
         if (info.type == "Newspaper")
         {
-            _currentObj = GameObject.Instantiate(_newspaperPrefab, parent.transform);
+            var newspaper = GameObject.Instantiate(_newspaperPrefab, parent.transform);
+            var newspaperInfo = JsonUtility.FromJson<NewspaperJson>(meta);
+            newspaper.Init(newspaperInfo);
+            _currentObj = newspaper.gameObject;
         }
     }
 }
