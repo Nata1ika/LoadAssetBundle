@@ -10,7 +10,7 @@ public class Newspaper : MonoBehaviour
     [SerializeField] Button _prevButton;
 
     private NewspaperPage[] _pages;
-    private int _currentPage = -1;
+    [SerializeField] private int _currentPage = -1;
 
 
     public void Init(NewspaperJson json)
@@ -21,23 +21,30 @@ public class Newspaper : MonoBehaviour
         for (int i = 0; i < countPages; i++)
         {
             _pages[i] = Instantiate(_pagePrefab, transform);
-            _pages[i].transform.localPosition = new Vector3(0, 0.001f * i, 0);
+            _pages[i].transform.localPosition = new Vector3(0, 0.001f * (countPages - i), 0);
 
             _pages[i].StartCoroutine(_pages[i].SetImage(json.pathImage[i*2], json.pathImage[i * 2 + 1]));
         }
+
+        _nextButton.interactable = (_currentPage < _pages.Length - 1);
+        _prevButton.interactable = (_currentPage >= 0);
     }
 
     public void Next()
     {
         _currentPage++;
         _pages[_currentPage].Next();
+
         _nextButton.interactable = (_currentPage < _pages.Length - 1);
+        _prevButton.interactable = (_currentPage >= 0);
     }
 
     public void Prev()
     {        
         _pages[_currentPage].Prev();
         _currentPage--;
+
+        _nextButton.interactable = (_currentPage < _pages.Length - 1);
         _prevButton.interactable = (_currentPage >= 0);
     }
 }
