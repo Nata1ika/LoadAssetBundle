@@ -4,14 +4,18 @@ using Vuforia;
 
 public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler //, ITrackableEventHandler
 {
+    public static Action<string, GameObject> ChangeTargetEvent;
+
     [SerializeField] CloudRecoBehaviour _cloudRecognition;
+    [SerializeField] ImageTargetBehaviour _imageTargetBehaviour;
+
     //[SerializeField] TrackableBehaviour _trackableBehaviour;
 
     private bool _mIsScanning = false;
     private string mTargetMetadata = "";
 
     //private TargetFinder.UpdateState? _targetFinderState = null;
-    //private TargetFinder _targetFinder;
+    private TargetFinder _targetFinder;
 
 
     /// <summary>
@@ -46,7 +50,7 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler //, ITra
     /// </summary>
     public void OnInitialized(TargetFinder targetFinder)
 	{
-        //_targetFinder = targetFinder;
+        _targetFinder = targetFinder;
     }
 
 	/// <summary>
@@ -69,6 +73,7 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler //, ITra
 	public void OnStateChanged(bool scanning)
     {
 		_mIsScanning = scanning;
+        /*
         if (scanning)
         {
             // clear all known trackables
@@ -84,17 +89,28 @@ public class SimpleCloudHandler : MonoBehaviour, ICloudRecoEventHandler //, ITra
             }
             targetFinder.ClearTrackables(false);
 		}
+        */
 	}
 
     // Here we handle a cloud target recognition event
     public void OnNewSearchResult(TargetFinder.TargetSearchResult targetSearchResult)
     {
-        Debug.Log("metadate: " + targetSearchResult.MetaData);
-        // do something with the target metadata
-        mTargetMetadata = targetSearchResult.MetaData;
+        var newImageTarget = Instantiate(_imageTargetBehaviour.gameObject);
+        newImageTarget.gameObject.name = targetSearchResult.MetaData;
+        _targetFinder.EnableTracking(targetSearchResult, newImageTarget);
+
+
+        if (ChangeTargetEvent != null)
+        {
+            ChangeTargetEvent(targetSearchResult.MetaData, newImageTarget);
+        }
 
         // stop the target finder (i.e. stop scanning the cloud)
         //_cloudRecognition.CloudRecoEnabled = false;
+
+        //debug
+        Debug.Log("metadate: " + targetSearchResult.MetaData);
+        mTargetMetadata = targetSearchResult.MetaData;
     }
 
     /*
