@@ -35,9 +35,15 @@ public class JsonReader : MonoBehaviour
         var info = JsonUtility.FromJson<Json>(meta);
         if (info.type == "Newspaper")
         {
-            var newspaper = GameObject.Instantiate(_newspaperPrefab, parent.transform);
+            var newspaper = GameObject.Instantiate(_newspaperPrefab, parent.transform.parent);            
             var newspaperInfo = JsonUtility.FromJson<NewspaperJson>(meta);
             newspaper.Init(newspaperInfo);
+
+            newspaper.transform.localScale = parent.transform.localScale;
+            newspaper.transform.position = parent.transform.position;
+            var smoothMotion = newspaper.gameObject.GetComponent<SmoothMotion>();
+            smoothMotion.Init(parent.transform);
+
             _currentObj = newspaper.gameObject;
         }
     }

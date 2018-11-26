@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4427854167404812}
   - component: {fileID: 114689008117980580}
+  - component: {fileID: 114336952524618858}
   m_Layer: 0
   m_Name: Newspaper
   m_TagString: Untagged
@@ -205,6 +206,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114336952524618858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123508694946280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563a0b2d277910a448e50b1278d6d4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114659090654292200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,6 +336,7 @@ MonoBehaviour:
     type: 2}
   _nextButton: {fileID: 114659090654292200}
   _prevButton: {fileID: 114663269242945304}
+  _currentPage: -1
 --- !u!114 &114708947455184954
 MonoBehaviour:
   m_ObjectHideFlags: 1
