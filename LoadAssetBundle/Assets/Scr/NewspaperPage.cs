@@ -8,8 +8,17 @@ public class NewspaperPage : MonoBehaviour
     [SerializeField] MeshRenderer _first;
     [SerializeField] MeshRenderer _second;
 
-    public IEnumerator SetImage(string firstPath, string secondPath)
+    public IEnumerator SetImage(string firstPath, string secondPath, int index)
     {
+        var position = _first.transform.localPosition;
+        position.y = 0.001f * index;
+        _first.transform.localPosition = position;
+
+        position = _second.transform.localPosition;
+        position.y = 0.001f * index;
+        _second.transform.localPosition = position;
+
+
         WWW www = new WWW(firstPath);
         yield return www;
         _first.material.mainTexture = www.texture;

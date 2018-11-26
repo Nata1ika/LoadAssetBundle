@@ -21,9 +21,8 @@ public class Newspaper : MonoBehaviour
         for (int i = 0; i < countPages; i++)
         {
             _pages[i] = Instantiate(_pagePrefab, transform);
-            _pages[i].transform.localPosition = new Vector3(0, 0.001f * (countPages - i), 0);
-
-            _pages[i].StartCoroutine(_pages[i].SetImage(json.pathImage[i*2], json.pathImage[i * 2 + 1]));
+            //_pages[i].transform.localPosition = new Vector3(0, 0.001f * (countPages - i), 0);
+            _pages[i].StartCoroutine(_pages[i].SetImage(json.pathImage[i*2], json.pathImage[i * 2 + 1], i));
         }
 
         _nextButton.interactable = (_currentPage < _pages.Length - 1);
