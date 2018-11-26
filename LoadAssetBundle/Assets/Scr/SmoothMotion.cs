@@ -5,8 +5,8 @@ using UnityEngine;
 public class SmoothMotion : MonoBehaviour
 {
     private Transform _target;
-    private const float DELTA_POSITION = 1f;
-    private const float DELTA_ROTATION = 1f;
+    private const float DELTA_POSITION = 4f;
+    private const float DELTA_ROTATION = 2f;
 
     private const float TIME = 0.3f;
 
@@ -22,7 +22,7 @@ public class SmoothMotion : MonoBehaviour
             return;
         }
 
-        float normalizedTime = Time.deltaTime / TIME;
+        float normalizedTime = 0.5f; //Time.deltaTime / TIME;
         normalizedTime = Mathf.Min(normalizedTime, 1);
 
         if (Vector3.SqrMagnitude(transform.position - _target.position) > DELTA_POSITION)

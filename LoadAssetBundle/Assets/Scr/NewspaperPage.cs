@@ -15,7 +15,7 @@ public class NewspaperPage : MonoBehaviour
         _first.transform.localPosition = position;
 
         position = _second.transform.localPosition;
-        position.y = 0.001f * index;
+        position.y = 0.01f * index;
         _second.transform.localPosition = position;
 
 
