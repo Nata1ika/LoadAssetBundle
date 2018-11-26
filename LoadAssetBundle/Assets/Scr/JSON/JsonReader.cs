@@ -45,6 +45,6 @@ public class JsonReader : MonoBehaviour
     [ContextMenu("Initialization")]
     public void Test()
     {
-        Show("{\"type\":\"Newspaper\",\"pathImage\":[\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/0.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/1.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/2.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/3.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/4.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/uniWebView/newspaper/5.jpg\"]}", gameObject);
+        Show("{\"type\":\"Newspaper\",\"pathImage\":[\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/0.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/1.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/2.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/3.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/4.jpg\",\"https://raw.githubusercontent.com/Nata1ika/LoadAssetBundle/blob/master/newspaper/5.jpg\"]}", gameObject);
     }
 }
