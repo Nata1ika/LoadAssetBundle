@@ -11,7 +11,7 @@ public class NewspaperPage : MonoBehaviour
     public IEnumerator SetImage(string firstPath, string secondPath, int index)
     {
         var position = _first.transform.localPosition;
-        position.y = 0.001f * index;
+        position.y = 0.01f * index;
         _first.transform.localPosition = position;
 
         position = _second.transform.localPosition;
