@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/vuforia.unity
     guid: a7bc1002de0bbb647949a0e306b38966
   - enabled: 0
     path: Assets/Scenes/webView.unity
     guid: 9c5a960a4703d7c4a9bc302b8a62dbfa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/vuforiaNewYear.unity
     guid: 38267ba3318874e4ba52e894fae3e6dc
   m_configObjects: {}

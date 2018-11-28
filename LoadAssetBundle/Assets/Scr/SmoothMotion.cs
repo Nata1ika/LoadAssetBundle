@@ -5,10 +5,6 @@ using UnityEngine;
 public class SmoothMotion : MonoBehaviour
 {
     private Transform _target;
-    private const float DELTA_POSITION = 4f;
-    private const float DELTA_ROTATION = 2f;
-
-    private const float TIME = 0.3f;
 
     public void Init(Transform target)
     {
@@ -22,10 +18,10 @@ public class SmoothMotion : MonoBehaviour
             return;
         }
 
-        float normalizedTime = 0.5f; //Time.deltaTime / TIME;
+        float normalizedTime = SmoothConstants.speed; 
         normalizedTime = Mathf.Min(normalizedTime, 1);
 
-        if (Vector3.SqrMagnitude(transform.position - _target.position) > DELTA_POSITION)
+        if (Vector3.Magnitude(transform.position - _target.position) > SmoothConstants.deadZone)
         {
             transform.position = Vector3.Lerp(transform.position, _target.position, normalizedTime);
         }
@@ -62,7 +58,7 @@ public class SmoothMotion : MonoBehaviour
             currentRotation.z -= 360;
         }
 
-        if (Vector3.SqrMagnitude(currentRotation - targetRotation) > DELTA_ROTATION)
+        if (Vector3.Magnitude(currentRotation - targetRotation) > SmoothConstants.deadZoneRotation)
         {
             transform.eulerAngles = Vector3.Lerp(currentRotation, targetRotation, normalizedTime);
         }        
